@@ -1,0 +1,24 @@
+﻿@model BulkTweet.ViewModels.TweetForm
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1 class="display-5">使い方</h1>
+<p>指定したディレクトリに入っている画像ファイルを一括ツイートします。ツイート数には制限があるので時間をあけてやったほうがよいです</p>
+
+<div condition="!string.IsNullOrEmpty(ViewBag.Notice)" class="alert alert-primary" role="alert">@ViewBag.Notice</div>
+<div class="form">
+    <form asp-controller="Twitter" asp-action="index" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Text">Tweet</label>
+            <input asp-for="Text" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="UploadFiles">ツイートに添付するファイル</label>
+            <input asp-for="UploadFiles" class="form-control-file" webkitdirectory />
+        </div>
+        <button asp-auth="true" type="submit" class="btn btn-primary">Tweet!</button>
+        <button asp-auth="false" type="submit" class="btn btn-primary" disabled>Tweet!</button>
+    </form>
+</div>
