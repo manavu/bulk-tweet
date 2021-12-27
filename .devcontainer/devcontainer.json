@@ -1,0 +1,19 @@
+{
+    "name": "bulk_tweet",
+    "dockerFile": "Dockerfile",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    "workspaceFolder": "/workspace",
+    "appPort": [5000, 5001],
+    // "remoteUser": "vscode"
+    // コンテナに名前を付ける
+    "runArgs": [
+        "--name=bulk_tweet"
+    ],
+    // コンテナ起動後にコマンドを実行する
+    "postStartCommand": "dotnet dev-certs https",
+    "extensions": [
+        "ms-dotnettools.csharp",
+        "eamodio.gitlens",
+        "mhutchie.git-graph"
+    ]
+}
